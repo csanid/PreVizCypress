@@ -1,0 +1,13 @@
+{
+  "name": "previz-cypress",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "cy:open": "cypress open --browser chrome",
+    "cy:run": "cypress run --browser chrome"
+  },
+  "devDependencies": {
+    "cypress": "^12.17.4",
+    "typescript": "^5.7.3"
+  }
+}
