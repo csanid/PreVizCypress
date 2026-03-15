@@ -19,7 +19,7 @@ describe('AI Behavior', () => {
     cy.visit('/stock-footage');
     cy.intercept('POST', '**/api/stock-footage/parse-script').as('parseScript');
 
-    cy.get('#script-text').type(fixtures.structuredScript);
+    cy.getById('script-text').type(fixtures.structuredScript);
     cy.contains('button', 'Parse Script').click();
 
     cy.wait('@parseScript', { timeout: 30000 });

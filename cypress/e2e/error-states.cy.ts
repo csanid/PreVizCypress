@@ -11,7 +11,7 @@ describe('Error States', () => {
     cy.visit('/');
     cy.stubGenerateVideoError(500);
 
-    cy.get('#direct-prompt').type(fixtures.directPrompt);
+    cy.getById('direct-prompt').type(fixtures.directPrompt);
     cy.contains('button', 'Generate').click();
 
     cy.wait('@generateVideoError');
@@ -20,12 +20,12 @@ describe('Error States', () => {
 
   it('a network failure on /api/generate-video is handled gracefully', () => {
     cy.visit('/');
-    cy.intercept('POST', '**/api/generate-video', { forceNetworkError: true }).as('generateVideoNetworkError');
+    cy.stubNetworkError('**/api/generate-video');
 
-    cy.get('#direct-prompt').type(fixtures.directPrompt);
+    cy.getById('direct-prompt').type(fixtures.directPrompt);
     cy.contains('button', 'Generate').click();
 
-    cy.wait('@generateVideoNetworkError');
+    cy.wait('@networkError');
     cy.contains('Failed to fetch').should('be.visible');
 
     // Assert that a retry option is available

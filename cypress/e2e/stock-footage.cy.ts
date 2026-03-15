@@ -18,12 +18,13 @@ describe('Stock Footage', () => {
 
   it('the Parse Script button triggers a POST /api/stock-footage/parse-script request with the script in the payload', () => {
     cy.visit('/stock-footage');
-    cy.get('#script-text').type(fixtures.structuredScript);
+    cy.getById('script-text').type(fixtures.structuredScript);
     cy.intercept('POST', '**/api/stock-footage/parse-script').as('parseScript');
     cy.contains('button', 'Parse Script').click();
-
     cy.wait('@parseScript').its('request.body').should('deep.include', {
       scriptText: fixtures.structuredScript,
     });
   });
 });
+
+

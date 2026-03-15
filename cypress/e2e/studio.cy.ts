@@ -9,26 +9,26 @@ describe('Studio', () => {
 
   it('the prompt textarea accepts text input', () => {
     cy.visit('/');
-    cy.get('#direct-prompt').type('A cinematic test shot');
-    cy.get('#direct-prompt').should('have.value', 'A cinematic test shot');
+    cy.getById('direct-prompt').type('A cinematic test shot');
+    cy.getById('direct-prompt').should('have.value', 'A cinematic test shot');
   });
 
   it('the number of videos field does not accept alphabetic input', () => {
     cy.visit('/');
-    cy.get('#num-videos').clear().type('abc');
-    cy.get('#num-videos').should('not.have.value', 'abc');
+    cy.getById('num-videos').clear().type('abc');
+    cy.getById('num-videos').should('not.have.value', 'abc');
   });
 
   it('the number of videos field does not accept values below 1', () => {
     cy.visit('/');
-    cy.get('#num-videos').type('{downArrow}{downArrow}{downArrow}');
-    cy.get('#num-videos').should('have.value', '1');
+    cy.getById('num-videos').type('{downArrow}{downArrow}{downArrow}');
+    cy.getById('num-videos').should('have.value', '1');
   });
 
   it('the number of videos field does not accept values above 5', () => {
     cy.visit('/');
-    cy.get('#num-videos').type('{upArrow}{upArrow}{upArrow}');
-    cy.get('#num-videos').should('have.value', '5');
+    cy.getById('num-videos').type('{upArrow}{upArrow}{upArrow}');
+    cy.getById('num-videos').should('have.value', '5');
   });
 
   it('submitting with an empty prompt does not trigger a POST request to /generate-video', () => {
@@ -45,8 +45,8 @@ describe('Studio', () => {
     cy.visit('/');
     cy.intercept('POST', '**/api/generate-video').as('generateVideo');
 
-    cy.get('#direct-prompt').type(fixtures.directPrompt);
-    cy.get('#num-videos').type('{downArrow}{downArrow}');
+    cy.getById('direct-prompt').type(fixtures.directPrompt);
+    cy.getById('num-videos').type('{downArrow}{downArrow}');
     cy.contains('label', 'Video Duration').parent().find('select').select('4');
     cy.contains('label', 'Aspect Ratio').parent().find('select').select('portrait');
     // Pro toggle is off by default — leave it off
