@@ -9,7 +9,7 @@ describe('Navigation', () => {
     cy.contains('a', 'Studio').click();
     cy.url().should('eq', Cypress.config('baseUrl'));
     cy.contains('h2', 'Create Your Scene').should('be.visible');
-});
+  });
   
   it('clicking the Stock Footage nav tab navigates to /stock-footage and renders the heading', () => {
     cy.visit('/');
