@@ -4,13 +4,13 @@ describe('Navigation', () => {
     cy.contains('h2', 'Create Your Scene').should('be.visible');
   });
 
-  it('clicking the Studio nav tab navigates to / and renders the heading', () => {
-    cy.visit('/');
+  it('clicking the Studio nav tab from another page navigates back to / and renders the heading', () => {
+    cy.visit('/history');
     cy.contains('a', 'Studio').click();
-    cy.url().should('include', '/');
+    cy.url().should('eq', Cypress.config('baseUrl'));
     cy.contains('h2', 'Create Your Scene').should('be.visible');
-  });
-
+});
+  
   it('clicking the Stock Footage nav tab navigates to /stock-footage and renders the heading', () => {
     cy.visit('/');
     cy.contains('a', 'Stock Footage').click();
