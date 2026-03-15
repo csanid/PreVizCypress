@@ -9,7 +9,6 @@ describe('History', () => {
   it('the All Videos tab renders at least one video card', () => {
     cy.visit('/history');
     cy.contains('button', 'All Videos').click();
-    // Video cards display duration info — match any card showing "N seconds"
     cy.contains(/\d+s/).should('be.visible');
   });
 });
