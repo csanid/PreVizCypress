@@ -10,10 +10,6 @@ declare global {
   }
 }
 
-Cypress.Commands.add('stubGenerateVideo', (fixture: string) => {
-  cy.intercept('POST', '**/api/generate-video', { fixture }).as('generateVideo');
-});
-
 Cypress.Commands.add('stubGenerateVideoError', (statusCode: number) => {
   cy.intercept('POST', '**/api/generate-video', {
     statusCode,
