@@ -1,7 +1,7 @@
 describe('Studio', () => {
   let fixtures: { directPrompt: string };
 
-  before(() => {
+  beforeEach(() => {
     cy.fixture('studio-prompts').then((data) => {
       fixtures = data;
     });

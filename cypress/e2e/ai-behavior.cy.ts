@@ -1,7 +1,7 @@
 describe('AI Behavior', () => {
   let fixtures: { structuredScript: string };
 
-  before(() => {
+  beforeEach(() => {
     cy.fixture('stock-footage-scripts').then((data) => {
       fixtures = data;
     });
