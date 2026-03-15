@@ -1,0 +1,8 @@
+{
+  "taskId": "video_test123",
+  "duration_ms": 1790,
+  "prompt_length": 100,
+  "aspect_ratio": "landscape",
+  "seconds": "8",
+  "pro": true
+}
